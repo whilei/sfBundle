@@ -11,7 +11,7 @@ import (
 func BundleWindowsApp(libDir, name string) {
 	os.Mkdir(name, 0644)
 	exec.Command("cp", libDir+"/*.dll", name).Run()
-	exec.Command("go", "build", "-o", name+"/"+name+".exe")
+	exec.Command("go", "build", "-ldflags", "-H windowsgui", "-o", name + "/" + name + ".exe").Run()
 }
 
 func BundleDarwinApp(name string) {
